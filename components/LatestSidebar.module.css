@@ -1,0 +1,108 @@
+.sidebar {
+    padding: 24px 16px;
+    border-top: 1px solid #D8D3CA;
+}
+
+.heading {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item {
+    padding-bottom: 20px;
+    padding-right: 5px;
+    border-bottom: 1px solid #D8D3CA;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.itemLink {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.category {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-grey);
+    transition: color 0.3s ease;
+}
+
+.headline {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--color-ink);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.headline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.itemLink:hover .headline::after,
+.itemLink:focus-visible .headline::after {
+    width: 100%;
+}
+
+.itemLink:hover .category,
+.itemLink:hover .headline,
+.itemLink:focus-visible .category,
+.itemLink:focus-visible .headline {
+    color: var(--color-accent);
+}
+
+.pageNote {
+    align-self: flex-end;
+    padding-top: 0;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: color-mix(in srgb, var(--color-muted) 50%, var(--color-ink) 50%);
+    transition: color 0.3s ease, transform 0.3s ease, padding-top 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.itemLink:hover .pageNote,
+.itemLink:focus-visible .pageNote {
+    padding-top: 10px;
+    color: var(--color-accent);
+    transform: translateX(4px);
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        border-top: none;
+        padding: 32px 24px;
+    }
+}

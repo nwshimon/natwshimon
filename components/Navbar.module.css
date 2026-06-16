@@ -1,0 +1,134 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    width: 95%;
+    padding: 1rem;
+    margin: auto;
+}
+
+.taglineStrip {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D8D3CA;
+    padding: 6px 24px;
+}
+
+.taglineText {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--color-grey);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.masthead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 2px;
+}
+
+.mastheadTitle {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.15s;
+}
+
+.mastheadSubtitle {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1rem;
+    color: var(--color-grey);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.25s;
+}
+
+.socialIcons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.35s;
+}
+
+.socialIcon {
+    width: 25px;
+    height: 25px;
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: #F5F0E8;
+    border-bottom: 1px solid #D8D3CA;
+    border-top: 1px solid #D8D3CA;
+}
+
+.navInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 24px;
+}
+
+.navLink {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1rem;
+    color: #585151;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.navLink:hover {
+    color: #C8973A;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+    .mastheadTitle {
+        font-size: 3rem;
+    }
+
+    .navInner {
+        flex-direction: row;
+        gap: 60px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navLink {
+        font-size: 1.1rem;
+    }
+
+
+    .taglineText {
+        font-family: var(--font-afacad), system-ui, sans-serif;
+        font-size: 0.9rem;
+        color: #8a8680;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,166 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── MOBILE (default) ── */
+
+.photoMobile {
+    display: block;
+    padding: 24px 24px 0;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.45s;
+}
+
+.photoDesktop {
+    display: none;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.45s;
+}
+
+.pageGrid {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    display: none;
+}
+
+.contentArea {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 32px;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sectionLabel {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-top: 0.25rem;
+    color: var(--color-accent);
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.15s;
+}
+
+.name {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.05;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.25s;
+}
+
+.bio {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.25rem;
+    color: var(--color-ink);
+    line-height: 1.4;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: 0.35s;
+}
+
+.latestMobile {
+    display: block;
+}
+
+.previewSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px;
+    text-align: center;
+}
+
+/* ── DESKTOP ── */
+@media (min-width: 1024px) {
+
+    .photoMobile {
+        display: none;
+    }
+
+    .latestMobile {
+        display: none;
+    }
+
+    .photoDesktop {
+        display: block;
+        flex: 0 0 340px;
+    }
+
+    .sidebar {
+        display: block;
+        border-right: 2px solid var(--color-border);
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .pageGrid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        grid-template-rows: auto;
+        align-items: stretch;
+    }
+
+    .contentArea {
+        grid-column: 2;
+        grid-row: 1;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 48px;
+        gap: 48px;
+    }
+
+    .about {
+        flex: 1;
+    }
+
+    .name {
+        font-size: 3.5rem;
+    }
+
+    .previewSection {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        padding: 48px;
+    }
+
+    .previewSection > :nth-child(1),
+    .previewSection > :nth-child(2) {
+        flex: 0 0 40%;
+    }
+
+    .previewSection > :nth-child(3) {
+        flex: 0 0 20%;
+        min-width: 280px;
+    }
+}

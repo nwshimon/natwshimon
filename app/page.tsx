@@ -1,65 +1,91 @@
-import Image from "next/image";
+'use client'
+
+import { useState } from 'react'
+import styles from './page.module.css'
+import PhotoStack from '@/components/PhotoStack'
+import LatestSidebar from '@/components/LatestSidebar'
+import PagePreviewCard from '@/components/PagePreviewCard'
+import ContactStub from '@/components/ContactStub'
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    const [photoOrder, setPhotoOrder] = useState([0, 1, 2])
+
+    const handlePhotoClick = (photoIndex: number) => {
+        console.log('photo clicked', photoIndex)
+        setPhotoOrder((prev) => {
+            if (prev[0] === photoIndex) return prev
+            const rest = prev.filter((i) => i !== photoIndex)
+            return [photoIndex, ...rest]
+        })
+    }
+
+    return (
+        <main className={styles.main}>
+
+            {/* Desktop: sidebar + content grid */}
+            <div className={styles.pageGrid}>
+
+                <div className={styles.sidebar}>
+                    <LatestSidebar />
+                </div>
+
+                <div className={styles.contentArea}>
+
+                    <section className={styles.about}>
+                        <span className={styles.sectionLabel}>About the Publisher</span>
+                        <h2 className={styles.name}>
+                            Natasha<br />
+                            Wynne<br />
+                            Shimon
+                        </h2>
+                        <p className={styles.bio}>
+                            An avid collector of vinyl records and ambitious pursuer of
+                            creative and fun tech projects, Natasha (&quot;Nat&quot;) Shimon
+                            is a University of Michigan student who spends her time tinkering
+                            with code, writing about film, and occasionally making things
+                            that she&apos;s pretty proud of. With her sights set on{' '}
+                            <strong>product management</strong>, Nat is excited to show you
+                            her proudest works.
+                        </p>
+
+                        {/* Mobile: photo stack below bio */}
+                        <div className={styles.photoMobile}>
+                            <PhotoStack order={photoOrder} onPhotoClick={handlePhotoClick} />
+                        </div>
+                    </section>
+
+                    <div className={styles.photoDesktop}>
+                        <PhotoStack order={photoOrder} onPhotoClick={handlePhotoClick} />
+                    </div>
+
+                </div>
+
+                <div className={styles.latestMobile}>
+                    <LatestSidebar />
+                </div>
+
+            </div>
+
+            <section className={styles.previewSection}>
+                <PagePreviewCard
+                    href="/works"
+                    label="Digital Projects"
+                    headline="Where late-night ideas turn into shipped products."
+                    teaser="Browse code, builds, and product experiments."
+                    imageSrc="/photos/knitpicker.avif"
+                    animationDelay="0.55s"
+                />
+                <PagePreviewCard
+                    href="/b-side"
+                    label="Arts & Etc."
+                    headline="Vinyl, film, and the things made just for fun."
+                    teaser="A look at music, writing, and creative detours."
+                    imageSrc="/photos/arts-sxsw.webp"
+                    animationDelay="0.65s"
+                />
+                <ContactStub animationDelay="0.75s" />
+            </section>
+
+        </main>
+    )
 }
