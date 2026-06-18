@@ -1,14 +1,3 @@
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .card {
     display: flex;
     flex-direction: column;
@@ -20,8 +9,8 @@
 
 .card:hover,
 .card:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(200, 151, 58, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 48px rgba(200, 151, 58, 0.2);
     border-color: var(--color-accent);
 }
 
@@ -33,9 +22,11 @@
 .imageWrap {
     position: relative;
     width: 100%;
-    height: 180px;
+    height: 240px;
+    background: color-mix(in srgb, var(--color-border) 60%, var(--color-cream) 40%);
     border-bottom: 1px solid var(--color-border);
     transition: border-color 0.25s ease;
+    overflow: hidden;
 }
 
 .card:hover .imageWrap,
@@ -46,39 +37,49 @@
 .body {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 24px;
+    gap: 12px;
+    padding: 28px;
+    flex: 1;
 }
 
-.label {
-    font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-grey);
-}
-
-.headline {
+.title {
     font-family: var(--font-fraunces), Georgia, serif;
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--color-ink);
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
-.teaser {
+.description {
     font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 1rem;
-    color: color-mix(in srgb, var(--color-muted) 50%, var(--color-ink) 50%);
-    line-height: 1.4;
+    font-size: 1.05rem;
+    color: color-mix(in srgb, var(--color-muted) 40%, var(--color-ink) 60%);
+    line-height: 1.55;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    transition: letter-spacing 0.2s ease;
+}
+
+.card:hover .cta,
+.card:focus-visible .cta {
+    letter-spacing: 0.1em;
 }
 
 @media (min-width: 1024px) {
     .imageWrap {
-        height: 220px;
+        height: 300px;
     }
 
-    .headline {
-        font-size: 1.5rem;
+    .title {
+        font-size: 2rem;
     }
 }

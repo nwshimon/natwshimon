@@ -1,0 +1,114 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 120px;
+    min-height: 50vh;
+    animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.eyebrow {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.rule {
+    width: 48px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: 0 auto 20px;
+}
+
+.number {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: clamp(6rem, 20vw, 12rem);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--color-ink);
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    /* Subtle ink-bleed texture via text-shadow */
+    text-shadow:
+        1px 1px 0 color-mix(in srgb, var(--color-ink) 8%, transparent),
+        2px 2px 0 color-mix(in srgb, var(--color-ink) 4%, transparent);
+}
+
+.headline {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.2;
+    max-width: 28ch;
+    margin-bottom: 16px;
+}
+
+.subline {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+    max-width: 44ch;
+    margin-bottom: 40px;
+}
+
+.divider {
+    width: 100%;
+    max-width: 320px;
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 auto 40px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+    border: 1px solid var(--color-accent);
+    padding: 10px 24px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.backLink:hover,
+.backLink:focus-visible {
+    background: var(--color-accent);
+    color: var(--color-cream);
+}
+
+.backLink:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.arrow {
+    transition: transform 0.2s ease;
+}
+
+.backLink:hover .arrow {
+    transform: translateX(-3px);
+}

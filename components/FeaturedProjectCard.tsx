@@ -1,45 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import TagBadge from './TagBadge'
-import styles from './ProjectCard.module.css'
+import styles from './FeaturedProjectCard.module.css'
 
-interface ProjectCardProps {
+interface FeaturedProjectCardProps {
     href: string
-    dateRange: string
     category: string
     imageSrc: string
     imageAlt: string
     title: string
     description: string
-    external?: boolean
+    ctaLabel?: string
 }
 
-export default function ProjectCard({
+export default function FeaturedProjectCard({
     href,
-    dateRange,
     category,
     imageSrc,
     imageAlt,
     title,
     description,
-    external,
-}: ProjectCardProps) {
+    ctaLabel = 'Read Case Study',
+}: FeaturedProjectCardProps) {
     return (
-        <Link
-            href={href}
-            className={styles.card}
-            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        >
+        <Link href={href} className={styles.card}>
             <div className={styles.imageWrap}>
                 <Image src={imageSrc} alt={imageAlt} fill style={{ objectFit: 'cover' }} />
             </div>
             <div className={styles.body}>
-                <div className={styles.meta}>
-                    <span className={styles.date}>{dateRange}</span>
-                    <TagBadge label={category} />
-                </div>
+                <TagBadge label={category} />
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.description}>{description}</p>
+                <span className={styles.cta}>
+                    {ctaLabel} <span aria-hidden="true">→</span>
+                </span>
             </div>
         </Link>
     )
