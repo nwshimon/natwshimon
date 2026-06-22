@@ -42,7 +42,7 @@
 
 .name {
     font-family: var(--font-fraunces), Georgia, serif;
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--color-ink);
     line-height: 1.1;
@@ -53,10 +53,10 @@
     font-size: 1.1rem;
     color: var(--color-ink);
     line-height: 1.5;
-    max-width: 340px;
+    max-width: 85%;
 }
 
-/* ── CONTENT ROW (Latest + Featured) ── */
+/* ── CONTENT ROW (Sections + Featured) ── */
 
 .contentRow {
     width: 100%;
@@ -66,20 +66,44 @@
     padding: 0 24px 32px;
 }
 
-.latestCol {
+.sectionsCol {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebarStub {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .featuredCol {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.featuredHeading {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 24px;
 }
 
 .featuredCard {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
     border: 1px solid var(--color-border);
-    background: color-mix(in srgb, var(--color-border) 18%, var(--color-cream) 82%);
+    /* background: color-mix(in srgb, var(--color-border) 18%, var(--color-cream) 82%); */
     text-decoration: none;
     color: inherit;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -99,18 +123,44 @@
 
 .featuredImageWrap {
     position: relative;
-    flex-shrink: 0;
-    width: 100px;
-    height: 80px;
-    align-self: stretch;
+    flex: 0 0 36%;
+    max-width: 148px;
+    aspect-ratio: 5 / 4;
+    height: auto;
     overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, var(--color-ink) 30%);
+    /* border-radius: 10px; */
+    background: color-mix(in srgb, var(--color-border) 55%, var(--color-cream) 45%);
+}
+
+.featuredPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background-image: radial-gradient(circle at 78% 22%, rgba(190, 149, 74, 0.28), transparent 42%),
+        linear-gradient(145deg, #4A281C, #24110B);
+}
+
+.featuredPlaceholderText {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    color: color-mix(in srgb, var(--color-cream) 88%, var(--color-accent) 12%);
 }
 
 .featuredBody {
     display: flex;
+    flex: 1 1 0;
     flex-direction: column;
     gap: 8px;
-    padding: 16px;
+    min-width: 0;
+    padding: 0;
 }
 
 .featuredLabel {
@@ -125,7 +175,7 @@
 
 .featuredTitle {
     font-family: var(--font-fraunces), Georgia, serif;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-ink);
     line-height: 1.1;
@@ -174,34 +224,39 @@
     }
 
     .name {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
     }
 
     .contentRow {
         flex-direction: row;
-        align-items: flex-start;
-        padding: 0 48px 48px;
+        align-items: stretch;
+        padding: 0 48px;
         gap: 0;
+        margin-bottom: 48px;
     }
 
-    .latestCol {
+    .sectionsCol {
         flex: 0 0 33%;
+        justify-content: space-between;
         border-right: 2px solid var(--color-border);
         padding-right: 32px;
+        padding-bottom: 48px;
     }
 
     .featuredCol {
         flex: 1;
         padding-left: 32px;
+        padding-bottom: 48px;
+        gap: 18px;
     }
 
     .featuredImageWrap {
-        width: 140px;
-        height: 110px;
+        flex-basis: 40%;
+        max-width: 212px;
     }
 
     .featuredTitle {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .previewSection {
@@ -213,11 +268,6 @@
 
     .previewSection > :nth-child(1),
     .previewSection > :nth-child(2) {
-        flex: 0 0 40%;
-    }
-
-    .previewSection > :nth-child(3) {
-        flex: 0 0 20%;
-        min-width: 280px;
+        flex: 1 1 50%;
     }
 }

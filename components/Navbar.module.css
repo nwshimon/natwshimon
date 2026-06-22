@@ -121,7 +121,7 @@
     .taglineText {
         font-family: var(--font-afacad), system-ui, sans-serif;
         font-size: 0.9rem;
-        color: #8a8680;
+        color: var(--color-grey);
         letter-spacing: 0.08em;
         text-transform: uppercase;
     }

@@ -1,9 +1,47 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.css'
-import LatestSidebar from '@/components/LatestSidebar'
+import SectionsSidebar from '@/components/SectionsSidebar'
 import PagePreviewCard from '@/components/PagePreviewCard'
 import ContactStub from '@/components/ContactStub'
+
+type FeaturedBlurb = {
+    href: string
+    label: string
+    title: string
+    description: string
+    imageAlt: string
+    imageSrc?: string
+    placeholder?: string
+}
+
+const featuredBlurbs: FeaturedBlurb[] = [
+    {
+        href: '/works',
+        label: 'Featured',
+        title: 'M-Genie',
+        description: 'A full-stack AI assistant streamlining maintenance workflows for University of Michigan facilities staff.',
+        imageSrc: '/photos/mgenie.avif',
+        imageAlt: 'M-Genie featured project placeholder',
+        placeholder: 'M-Genie',
+    },
+    {
+        href: '/works',
+        label: 'Featured',
+        title: 'M-LEAD',
+        description: 'An accessibility remediation effort improving navigation and usability across the University of Michigan leadership platform.',
+        imageSrc: '/photos/mlead.png',
+        imageAlt: 'M-LEAD featured project placeholder',
+    },
+    // {
+    //     href: '/works',
+    //     label: 'Prototypes',
+    //     title: 'Knitpicker',
+    //     description: 'A CLI that catches mistakes in knitting patterns before you pick up your needles.',
+    //     imageSrc: '/photos/knitpicker.avif',
+    //     imageAlt: 'Knitpicker CLI tool interface',
+    // },
+]
 
 export default function Home() {
     return (
@@ -14,55 +52,46 @@ export default function Home() {
                 <span className={styles.sectionLabel}>About the Publisher</span>
                 <h2 className={styles.name}>Natasha Wynne Shimon</h2>
                 <p className={styles.bio}>
-                    Data scientist and aspiring product manager building products at the intersection of people, data, and good design.
+                    A data scientist, a creative, and an aspiring product manager, always building tools at the intersection of people, data, and good design.
                 </p>
             </section>
 
             {/* Latest + Featured row */}
             <div className={styles.contentRow}>
-                <div className={styles.latestCol}>
-                    <LatestSidebar />
+                <div className={styles.sectionsCol}>
+                    <SectionsSidebar />
+                    <div className={styles.sidebarStub}>
+                        <ContactStub />
+                    </div>
                 </div>
                 <div className={styles.featuredCol}>
-                    <Link href="/works/m-genie" className={styles.featuredCard}>
-                        <div className={styles.featuredImageWrap}>
-                            <Image
-                                src="/photos/m-genie.png"
-                                alt="Screenshot of M-Genie"
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
-                        <div className={styles.featuredBody}>
-                            <span className={styles.featuredLabel}>Featured</span>
-                            <h3 className={styles.featuredTitle}>M-Genie</h3>
-                            <p className={styles.featuredDesc}>
-                                A full-stack AI assistant streamlining maintenance workflows for University of Michigan facilities staff.
-                            </p>
-                            <span className={styles.featuredCta}>Read the case study →</span>
-                        </div>
-                    </Link>
+                    <h2 className={styles.featuredHeading}>Recent Work</h2>
+                    {featuredBlurbs.map((project) => (
+                        <Link key={project.title} href={project.href} className={styles.featuredCard}>
+                            <div className={styles.featuredImageWrap}>
+                                {project.imageSrc ? (
+                                    <Image
+                                        src={project.imageSrc}
+                                        alt={project.imageAlt}
+                                        fill
+                                        style={{ objectFit: 'cover' }}
+                                    />
+                                ) : (
+                                    <div className={styles.featuredPlaceholder} aria-label={project.imageAlt}>
+                                        <span className={styles.featuredPlaceholderText}>{project.placeholder}</span>
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles.featuredBody}>
+                                <span className={styles.featuredLabel}>{project.label}</span>
+                                <h3 className={styles.featuredTitle}>{project.title}</h3>
+                                <p className={styles.featuredDesc}>{project.description}</p>
+                                <span className={styles.featuredCta}>See the work →</span>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </div>
-
-            {/* Preview cards */}
-            <section className={styles.previewSection}>
-                <PagePreviewCard
-                    href="/works"
-                    label="Digital Projects"
-                    headline="Where late-night ideas turn into shipped products."
-                    teaser="Browse code, builds, and product experiments."
-                    imageSrc="/photos/knitpicker.avif"
-                />
-                <PagePreviewCard
-                    href="/b-side"
-                    label="Arts & Etc."
-                    headline="Vinyl, film, and the things made just for fun."
-                    teaser="A look at music, writing, and creative detours."
-                    imageSrc="/photos/arts-sxsw.webp"
-                />
-                <ContactStub />
-            </section>
 
         </main>
     )

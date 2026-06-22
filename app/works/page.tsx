@@ -5,14 +5,16 @@ import TagBadge from '@/components/TagBadge'
 import { caseStudies } from '@/lib/caseStudies'
 import styles from './Works.module.css'
 
-const featuredProjects = caseStudies.map((cs) => ({
-    href: `/works/${cs.slug}`,
-    category: cs.category,
-    imageSrc: cs.heroImage,
-    imageAlt: cs.heroImageAlt,
-    title: cs.title,
-    description: cs.dek,
-}))
+const featuredProjects = caseStudies
+    .filter((cs) => cs.heroImage !== null)
+    .map((cs) => ({
+        href: `/works/${cs.slug}`,
+        category: cs.category,
+        imageSrc: cs.heroImage as string,
+        imageAlt: `${cs.title} hero image`,
+        title: cs.title,
+        description: cs.dek,
+    }))
 
 const prototypeProjects = [
     {

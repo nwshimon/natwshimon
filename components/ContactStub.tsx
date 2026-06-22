@@ -31,15 +31,16 @@ export default function ContactStub({ animationDelay }: ContactStubProps) {
             style={animationDelay ? { animationDelay } : undefined}
             onClick={handleClick}
         >
-            <div className={`${styles.admitSection} ${isTearing ? styles.tornOff : ''}`}>
-                <span className={styles.admit}>Admit One</span>
-                <span className={styles.meta}>Nat&apos;s Archives · Est. 2005</span>
-            </div>
             <div className={styles.stubBody}>
-                <div className={styles.tearLine} aria-hidden="true" />
                 <div className={styles.bottom}>
                     <span className={styles.cta}>Get In Touch</span>
-                    <span className={styles.arrow} aria-hidden="true">→</span>
+                </div>
+            </div>
+            <div className={styles.tearLine} aria-hidden="true" />
+            <div className={`${styles.admitSection} ${isTearing ? styles.tornOff : ''}`}>
+                <div className={styles.admitCopy}>
+                    <p className={styles.admit}>Admit One</p>
+                    <p className={styles.invite}>You&apos;re Invited!</p>
                 </div>
             </div>
         </Link>
