@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import { caseStudies, getCaseStudy } from '@/lib/caseStudies'
-import CaseStudyHero from '@/components/CaseStudyHero'
+import CaseStudyHero from '@/components/CaseStudy/CaseStudyHero'
+import { MetaCards } from '@/components/CaseStudy/MetaCards'
+import { ProseBody } from '@/components/CaseStudy/ProseBody'
 import styles from './CaseStudyPage.module.css'
 
 export async function generateStaticParams() {
@@ -37,7 +38,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             {/* 2 — Headline block */}
             <header className={styles.headline}>
                 <h1 className={styles.title}>{cs.title}</h1>
-                <p className={styles.dek}>{cs.dek}</p>
+                {cs.dek && <p className={styles.dek}>{cs.dek}</p>}
             </header>
 
             {/* 3 — Hero */}
@@ -45,44 +46,22 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 heroType={cs.heroType}
                 heroImage={cs.heroImage}
                 title={cs.title}
+                heroLink={cs.heroLink}
+                addressBarText={cs.addressBarText}
             />
 
-            {/* 4 — Two-column fact row */}
-            <div className={styles.factRow}>
-                <div className={styles.factCol}>
-                    <span className={styles.factLabel}>The Problem</span>
-                    <p className={styles.factText}>{cs.problem}</p>
-                </div>
-                <div className={styles.factDivider} aria-hidden="true" />
-                <div className={styles.factCol}>
-                    <span className={styles.factLabel}>My Role</span>
-                    <p className={styles.factText}>{cs.role}</p>
-                </div>
+            {/* 3b — Hero subtitle */}
+            {cs.heroSubtitle && (
+                <p className={styles.heroSubtitle}>{cs.heroSubtitle}</p>
+            )}
+
+            {/* 4 — MetaCards */}
+            <div className={styles.metaCardsWrap}>
+                <MetaCards cards={cs.metaCards} />
             </div>
 
             {/* 5 — Body */}
-            <div className={styles.body}>
-                {cs.body.map((block, i) => {
-                    if (block.type === 'paragraph') {
-                        return <p key={i} className={styles.prose}>{block.content}</p>
-                    }
-                    return (
-                        <figure key={i} className={styles.inlineImageFigure}>
-                            <div className={styles.inlineImageWrap}>
-                                <Image
-                                    src={block.src}
-                                    alt={block.alt}
-                                    fill
-                                    style={{ objectFit: 'contain' }}
-                                />
-                            </div>
-                            {block.caption && (
-                                <figcaption className={styles.caption}>{block.caption}</figcaption>
-                            )}
-                        </figure>
-                    )
-                })}
-            </div>
+            <ProseBody blocks={cs.body} />
 
             {/* 6 — Closing CTA */}
             <div className={styles.ctaWrap}>

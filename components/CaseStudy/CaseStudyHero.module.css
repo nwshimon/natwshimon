@@ -1,0 +1,159 @@
+.deviceFrameWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 20px;
+}
+
+.deviceFrameLink {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    text-decoration: none;
+}
+
+.deviceFrame {
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px 8px 4px 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(53, 51, 51, 0.1);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.deviceFrameLink .deviceFrame {
+    max-width: unset;
+}
+
+.deviceFrameClickable:hover {
+    box-shadow: 0 20px 52px rgba(53, 51, 51, 0.18);
+    transform: translateY(-3px);
+    /* border-color: var(--color-muted); */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .deviceFrame {
+        transition: none;
+    }
+}
+
+.browserChrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: color-mix(in srgb, var(--color-border) 60%, var(--color-cream) 40%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.chromeDot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: color-mix(in srgb, var(--color-muted) 45%, var(--color-cream) 55%);
+}
+
+.addressBar {
+    flex: 1;
+    height: 20px;
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--color-border) 80%, var(--color-cream) 20%);
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    overflow: hidden;
+}
+
+.addressBarText {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.7rem;
+    color: var(--color-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.addressBarText em {
+    font-style: italic;
+    opacity: 0.75;
+}
+
+.screen {
+    position: relative;
+    width: 100%;
+    background: var(--color-ink);
+    overflow: hidden;
+}
+
+/* Hover overlay on the screenshot */
+.hoverOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(53, 51, 51, 0.0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease, background 0.25s ease;
+    pointer-events: none;
+}
+
+.deviceFrameClickable:hover .hoverOverlay {
+    opacity: 1;
+    /* background: rgba(53, 51, 51, 0.35); */
+}
+
+.hoverLabel {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-cream);
+    background: rgba(53, 51, 51, 0.6);
+    border: 1px solid rgba(245, 240, 232, 0.25);
+    border-radius: 6px;
+    padding: 8px 18px;
+    backdrop-filter: blur(4px);
+}
+
+/* ── PLAIN ── */
+
+.plainWrap {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+    .deviceFrameWrap {
+        padding: 0 48px 20px;
+    }
+
+    .deviceFrame {
+        border-radius: 10px 10px 6px 6px;
+    }
+
+    .browserChrome {
+        padding: 12px 18px;
+        gap: 8px;
+    }
+
+    .chromeDot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .addressBar {
+        height: 22px;
+    }
+
+    .addressBarText {
+        font-size: 0.72rem;
+    }
+}

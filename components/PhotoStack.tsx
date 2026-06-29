@@ -36,6 +36,7 @@ export default function PhotoStack({ order, onPhotoClick }: PhotoStackProps) {
                             src={photo.src}
                             alt={photo.alt}
                             fill
+                            sizes="(min-width: 768px) 220px, 40vw"
                             style={{ objectFit: 'cover' }}
                         />
                     </button>

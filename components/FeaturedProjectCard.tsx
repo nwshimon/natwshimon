@@ -25,7 +25,13 @@ export default function FeaturedProjectCard({
     return (
         <Link href={href} className={styles.card}>
             <div className={styles.imageWrap}>
-                <Image src={imageSrc} alt={imageAlt} fill style={{ objectFit: 'cover' }} />
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    sizes="(min-width: 1280px) 560px, (min-width: 768px) 50vw, 100vw"
+                    style={{ objectFit: 'cover' }}
+                />
             </div>
             <div className={styles.body}>
                 <TagBadge label={category} />

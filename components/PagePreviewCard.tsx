@@ -26,7 +26,13 @@ export default function PagePreviewCard({
             style={animationDelay ? { animationDelay } : undefined}
         >
             <div className={styles.imageWrap}>
-                <Image src={imageSrc} alt="" fill style={{ objectFit: 'cover' }} />
+                <Image
+                    src={imageSrc}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 420px, 100vw"
+                    style={{ objectFit: 'cover' }}
+                />
             </div>
             <div className={styles.body}>
                 <span className={styles.label}>{label}</span>

@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.css'
 import SectionsSidebar from '@/components/SectionsSidebar'
-import PagePreviewCard from '@/components/PagePreviewCard'
 import ContactStub from '@/components/ContactStub'
 
 type FeaturedBlurb = {
@@ -17,37 +16,26 @@ type FeaturedBlurb = {
 
 const featuredBlurbs: FeaturedBlurb[] = [
     {
-        href: '/works',
+        href: '/works/m-genie',
         label: 'Featured',
         title: 'M-Genie',
         description: 'A full-stack AI assistant streamlining maintenance workflows for University of Michigan facilities staff.',
         imageSrc: '/photos/mgenie.avif',
         imageAlt: 'M-Genie featured project placeholder',
-        placeholder: 'M-Genie',
     },
     {
-        href: '/works',
+        href: '/works/m-lead',
         label: 'Featured',
         title: 'M-LEAD',
         description: 'An accessibility remediation effort improving navigation and usability across the University of Michigan leadership platform.',
         imageSrc: '/photos/mlead.png',
         imageAlt: 'M-LEAD featured project placeholder',
     },
-    // {
-    //     href: '/works',
-    //     label: 'Prototypes',
-    //     title: 'Knitpicker',
-    //     description: 'A CLI that catches mistakes in knitting patterns before you pick up your needles.',
-    //     imageSrc: '/photos/knitpicker.avif',
-    //     imageAlt: 'Knitpicker CLI tool interface',
-    // },
 ]
 
 export default function Home() {
     return (
         <main className={styles.main}>
-
-            {/* About the Publisher */}
             <section className={styles.about}>
                 <span className={styles.sectionLabel}>About the Publisher</span>
                 <h2 className={styles.name}>Natasha Wynne Shimon</h2>
@@ -56,7 +44,6 @@ export default function Home() {
                 </p>
             </section>
 
-            {/* Latest + Featured row */}
             <div className={styles.contentRow}>
                 <div className={styles.sectionsCol}>
                     <SectionsSidebar />
@@ -66,7 +53,7 @@ export default function Home() {
                 </div>
                 <div className={styles.featuredCol}>
                     <h2 className={styles.featuredHeading}>Recent Work</h2>
-                    {featuredBlurbs.map((project) => (
+                    {featuredBlurbs.map((project, index) => (
                         <Link key={project.title} href={project.href} className={styles.featuredCard}>
                             <div className={styles.featuredImageWrap}>
                                 {project.imageSrc ? (
@@ -74,11 +61,13 @@ export default function Home() {
                                         src={project.imageSrc}
                                         alt={project.imageAlt}
                                         fill
+                                        sizes="(min-width: 1280px) 520px, (min-width: 768px) 50vw, 100vw"
+                                        loading={index === 0 ? 'eager' : 'lazy'}
                                         style={{ objectFit: 'cover' }}
                                     />
                                 ) : (
                                     <div className={styles.featuredPlaceholder} aria-label={project.imageAlt}>
-                                        <span className={styles.featuredPlaceholderText}>{project.placeholder}</span>
+                                        <span className={styles.featuredPlaceholderText}>{project.title}</span>
                                     </div>
                                 )}
                             </div>
@@ -92,7 +81,6 @@ export default function Home() {
                     ))}
                 </div>
             </div>
-
         </main>
     )
 }

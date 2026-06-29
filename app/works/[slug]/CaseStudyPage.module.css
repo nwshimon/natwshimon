@@ -1,6 +1,6 @@
 .page {
     width: 100%;
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 50px 0;
 }
@@ -33,7 +33,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     padding: 0 48px;
 }
 
@@ -51,90 +51,26 @@
     font-weight: 400;
     color: var(--color-muted);
     line-height: 1.5;
-    max-width: 65ch;
 }
 
-/* ── 4. FACT ROW ── */
+/* ── 3b. HERO SUBTITLE ── */
 
-.factRow {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-border);
-    margin: 0 48px 48px;
-}
-
-.factCol {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 24px;
-    flex: 1;
-}
-
-.factDivider {
-    height: 1px;
-    background: var(--color-border);
-    /* becomes a vertical rule on desktop */
-}
-
-.factLabel {
+.heroSubtitle {
     font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-}
-
-.factText {
-    font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    width: 80%;
+    margin: auto;
+    /* font-style: italic; */
     color: var(--color-ink);
-    line-height: 1.6;
-}
-
-/* ── 5. BODY ── */
-
-.body {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 48px;
-    padding: 0 48px;
-}
-
-.prose {
-    font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 1.05rem;
-    color: var(--color-ink);
-    line-height: 1.75;
-    padding: 0 48px;
-    /* max-width: 68ch; */
-}
-
-.inlineImageFigure {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.inlineImageWrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: color-mix(in srgb, var(--color-border) 55%, var(--color-cream) 45%);
-    border: 1px solid var(--color-border);
-    overflow: hidden;
-}
-
-.caption {
-    font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 0.82rem;
-    font-style: italic;
-    color: var(--color-muted);
-    line-height: 1.45;
     text-align: center;
+    padding: 10px 48px 60px;
+}
+
+/* ── 4. META CARDS ── */
+
+.metaCardsWrap {
+    padding: 0 48px;
+    margin-bottom: 8px;
 }
 
 /* ── 6. CTA ── */
@@ -184,25 +120,7 @@
         padding: 0 64px;
     }
 
-    .factRow {
-        flex-direction: row;
-        align-items: stretch;
-        margin: 0 48px 48px;
-    }
-
-    .factDivider {
-        /* vertical rule */
-        width: 1px;
-        height: auto;
-        background: var(--color-border);
-        align-self: stretch;
-    }
-
-    .factCol {
-        padding: 28px 32px;
-    }
-
-    .body {
+    .metaCardsWrap {
         padding: 0 64px;
     }
 

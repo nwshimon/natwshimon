@@ -31,7 +31,13 @@ export default function ProjectCard({
             {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         >
             <div className={styles.imageWrap}>
-                <Image src={imageSrc} alt={imageAlt} fill style={{ objectFit: 'cover' }} />
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    sizes="(min-width: 1280px) 360px, (min-width: 768px) 50vw, 100vw"
+                    style={{ objectFit: 'cover' }}
+                />
             </div>
             <div className={styles.body}>
                 <div className={styles.meta}>

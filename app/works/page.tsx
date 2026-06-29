@@ -135,6 +135,7 @@ export default function WorksPage() {
                                             src={t.imageSrc}
                                             alt={t.imageAlt ?? ''}
                                             fill
+                                            sizes="(min-width: 1280px) 420px, (min-width: 768px) 50vw, 100vw"
                                             style={{ objectFit: 'cover' }}
                                         />
                                     </div>
