@@ -29,8 +29,6 @@ export function MetaCards({ cards }: MetaCardsProps) {
 
     return (
         <section className={styles.root}>
-            {/* <p className={styles.sectionLabel}>Project at a glance</p> */}
-            {/* <hr className={styles.rule} /> */}
             <div className={styles.columns}>
                 {cards.map((col, colIdx) => (
                     <div key={colIdx} className={styles.column}>

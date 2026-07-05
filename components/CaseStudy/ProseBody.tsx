@@ -5,6 +5,12 @@ import Image from 'next/image'
 import type { ContentBlock, SideItem } from '@/lib/caseStudies'
 import { renderRichText } from '@/lib/renderRichText'
 import { TwoColumnCauses } from './TwoColumnCauses'
+import { TimelinePhase } from './TimelinePhase'
+import { RevealTiles } from './RevealTile'
+import { CompareContrast } from './CompareContrast'
+import { OutcomeGallery } from './OutcomeGallery'
+import { AccordionColumns } from './AccordionColumns'
+import PhotoStack from '@/components/PhotoStack'
 import styles from './ProseBody.module.css'
 
 interface ProseBodyProps {
@@ -70,11 +76,35 @@ export function ProseBody({ blocks, className }: ProseBodyProps) {
                         return (
                             <h2 key={i} className={styles.sectionHeading}>
                                 {block.title}
+                                {block.label && (
+                                    <span className={styles.sectionLabel}>{block.label}</span>
+                                )}
                             </h2>
                         )
                     }
 
+                    if (block.type === 'proseCallout') {
+                        const calloutLeft = (block.calloutPosition ?? 'left') === 'left'
+                        const calloutEl = (
+                            <blockquote className={`${styles.callout} ${styles.calloutSide}`}>
+                                {renderRichText(block.callout)}
+                            </blockquote>
+                        )
+                        const proseEl = (
+                            <p className={`${styles.prose} ${styles.proseCalloutProse}`}>
+                                {renderRichText(block.prose)}
+                            </p>
+                        )
+                        return (
+                            <div key={i} className={styles.proseCalloutRow}>
+                                {calloutLeft ? calloutEl : proseEl}
+                                {calloutLeft ? proseEl : calloutEl}
+                            </div>
+                        )
+                    }
+
                     if (block.type === 'callout') {
+                        const calloutClass = `${styles.callout}${block.variant === 'centered' ? ` ${styles.calloutCentered}` : ''}`
                         if (block.image) {
                             const imgLeft = block.image.position === 'left'
                             return (
@@ -82,7 +112,7 @@ export function ProseBody({ blocks, className }: ProseBodyProps) {
                                     key={i}
                                     className={`${styles.proseWithImage} ${imgLeft ? styles.imageLeft : styles.imageRight}`}
                                 >
-                                    <blockquote className={styles.callout}>
+                                    <blockquote className={calloutClass}>
                                         {renderRichText(block.content)}
                                     </blockquote>
                                     <figure className={styles.inlineFigure}>
@@ -109,10 +139,39 @@ export function ProseBody({ blocks, className }: ProseBodyProps) {
                             )
                         }
                         return (
-                            <blockquote key={i} className={styles.callout}>
+                            <blockquote key={i} className={calloutClass}>
                                 {renderRichText(block.content)}
                             </blockquote>
                         )
+                    }
+
+                    if (block.type === 'subsection') {
+                        return <h3 key={i} className={styles.subsection}>{block.title}</h3>
+                    }
+
+                    if (block.type === 'twoParagraphs') {
+                        return (
+                            <div key={i} className={styles.twoParagraphs}>
+                                <p className={styles.prose}>{renderRichText(block.left)}</p>
+                                <p className={styles.prose}>{renderRichText(block.right)}</p>
+                            </div>
+                        )
+                    }
+
+                    if (block.type === 'revealTiles') {
+                        return <RevealTiles key={i} tiles={block.tiles} />
+                    }
+
+                    if (block.type === 'compareContrast') {
+                        return <CompareContrast key={i} left={block.left} right={block.right} criteria={block.criteria} onImageClick={openLightbox} />
+                    }
+
+                    if (block.type === 'outcomeGallery') {
+                        return <OutcomeGallery key={i} entries={block.entries} onImageClick={openLightbox} />
+                    }
+
+                    if (block.type === 'accordionColumns') {
+                        return <AccordionColumns key={i} columns={block.columns} onImageClick={openLightbox} />
                     }
 
                     if (block.type === 'paragraph') {
@@ -183,6 +242,16 @@ export function ProseBody({ blocks, className }: ProseBodyProps) {
                         return <TwoColumnCauses key={i} causes={block.items} />
                     }
 
+                    if (block.type === 'timelineGroup') {
+                        return (
+                            <div key={i}>
+                                {block.phases.map((phase, j) => (
+                                    <TimelinePhase key={j} {...phase} />
+                                ))}
+                            </div>
+                        )
+                    }
+
                     if (block.type === 'bullets') {
                         return (
                             <ul key={i} className={styles.bullets}>
@@ -195,7 +264,30 @@ export function ProseBody({ blocks, className }: ProseBodyProps) {
                         )
                     }
 
+                    if (block.type === 'bulletsWithPhotoStack') {
+                        return (
+                            <div key={i} className={styles.bulletsWithPhotoStack}>
+                                <ul className={`${styles.bullets} ${styles.bulletsNarrative}`}>
+                                    {block.items.map((item, idx) => (
+                                        <li key={idx} className={styles.bulletItem}>
+                                            {renderRichText(item)}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className={styles.photoStackColumn}>
+                                    {block.photoStacks.map((stack, stackIdx) => (
+                                        <section key={`${stack.label}-${stackIdx}`} className={styles.photoStackGroup}>
+                                            <p className={styles.photoStackLabel}>{stack.label}</p>
+                                            <PhotoStack photos={stack.photos} />
+                                        </section>
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                    }
+
                     // Standalone image block
+                    if (block.type !== 'image') return null
                     return (
                         <figure key={i} className={styles.inlineImageFigure}>
                             <button

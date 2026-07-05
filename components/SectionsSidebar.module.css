@@ -23,7 +23,7 @@
 .item {
     padding-bottom: 20px;
     padding-right: 5px;
-    border-bottom: 1px solid #D8D3CA;
+    /* border-bottom: 1px solid #D8D3CA; */
 }
 
 .item:last-child {
@@ -34,15 +34,22 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    padding: 14px;
+    margin: -14px;
+    background-color: transparent;
     text-decoration: none;
     color: inherit;
+    transition: background-color 0.18s ease;
+}
+
+.itemLink:hover,
+.itemLink:focus-visible {
+    background-color: rgba(136, 103, 41, 0.13);
 }
 
 .subtitle {
     font-family: var(--font-afacad), system-ui, sans-serif;
     font-size: 1rem;
-    /* letter-spacing: 0.1em; */
-    /* text-transform: uppercase; */
     color: var(--color-grey);
     transition: color 0.3s ease;
 }
@@ -74,12 +81,12 @@
     width: 100%;
 }
 
-.itemLink:hover .subtitle,
+/* .itemLink:hover .subtitle,
 .itemLink:hover .headline,
 .itemLink:focus-visible .subtitle,
 .itemLink:focus-visible .headline {
     color: var(--color-accent);
-}
+} */
 
 .pageNote {
     align-self: flex-end;
@@ -97,6 +104,225 @@
     padding-top: 10px;
     color: var(--color-accent);
     transform: translateX(4px);
+}
+
+/* ── Get In Touch stub ── */
+
+.stubLink {
+    --stub-accent: color-mix(in srgb, var(--color-lightaccent) 75%, white 25%);
+    --stub-glow: rgba(120, 78, 48, 0.42);
+    --stub-gradient-angle: 145deg;
+    --stub-gradient-start: #3C2017;
+    --stub-gradient-end: #200e08;
+    position: relative;
+    display: block;
+    padding: 16px;
+    background-color: #412921;
+    /* background-image: radial-gradient(circle at 15% 95%, var(--stub-glow), transparent 60%), */
+        /* linear-gradient(var(--stub-gradient-angle), var(--stub-gradient-start), var(--stub-gradient-end)); */
+    text-transform: uppercase;
+    color: var(--color-cream);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 10px double var(--color-cream);
+}
+
+.stubLink:hover,
+.stubLink:focus-visible {
+    transform: translateY(-4px);
+    background-color: #392319;
+    /* box-shadow: 0 12px 28px rgba(32, 14, 8, 0.35); */
+}
+
+.stubLink:focus-visible {
+    outline: 2px solid var(--stub-accent);
+    outline-offset: 4px;
+}
+
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 0 solid var(--color-cream);
+    transition: border-color 0.25s ease;
+}
+
+.cornerTL {
+    top: 0;
+    left: 0;
+    border-top-width: 5px;
+    border-left-width: 5px;
+}
+
+.cornerTR {
+    top: 0;
+    right: 0;
+    border-top-width: 5px;
+    border-right-width: 5px;
+}
+
+.cornerBL {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+}
+
+.cornerBR {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+}
+
+/* .stubLink:hover .cornerTL,
+.stubLink:hover .cornerTR,
+.stubLink:hover .cornerBL,
+.stubLink:hover .cornerBR,
+.stubLink:focus-visible .cornerTL,
+.stubLink:focus-visible .cornerTR,
+.stubLink:focus-visible .cornerBL,
+.stubLink:focus-visible .cornerBR {
+    border-color: var(--stub-accent);
+} */
+
+@media (prefers-reduced-motion: reduce) {
+    .stubLink {
+        transition: none;
+    }
+
+    .stubLink:hover,
+    .stubLink:focus-visible {
+        transform: none;
+    }
+}
+
+.stubInner {
+    position: relative;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px dashed color-mix(in srgb, var(--color-cream) 50%, transparent 50%);
+    /* border-radius: */
+}
+
+.innerCornerTL,
+.innerCornerTR,
+.innerCornerBL,
+.innerCornerBR {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 0 solid color-mix(in srgb, var(--color-cream) 50%, transparent 50%);
+    transition: border-color 0.25s ease;
+}
+
+/* .innerCornerTL {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.innerCornerTR {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.innerCornerBL {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.innerCornerBR {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+} */
+
+.stubLink:hover .innerCornerTL,
+.stubLink:hover .innerCornerTR,
+.stubLink:hover .innerCornerBL,
+.stubLink:hover .innerCornerBR,
+.stubLink:focus-visible .innerCornerTL,
+.stubLink:focus-visible .innerCornerTR,
+.stubLink:focus-visible .innerCornerBL,
+.stubLink:focus-visible .innerCornerBR {
+    border-color: var(--stub-accent);
+}
+
+.stubEyebrow {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-cream) 65%, transparent 35%);
+}
+
+.stubHeadline {
+    margin-top: 6px;
+    font-family: var(--font-afacad), Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-cream);
+    transition: color 0.3s ease;
+}
+
+.stubLink:hover .stubHeadline,
+.stubLink:focus-visible .stubHeadline {
+    color: var(--stub-accent);
+}
+
+.stubDivider {
+    width: 28px;
+    height: 1px;
+    margin: 12px auto;
+    background-color: var(--stub-accent);
+}
+
+.stubDescription {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--color-cream) 75%, transparent 25%);
+}
+
+.stubCloser {
+    margin-top: 14px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: color-mix(in srgb, var(--color-cream) 70%, transparent 30%);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.stubLink:hover .stubCloser,
+.stubLink:focus-visible .stubCloser {
+    color: var(--stub-accent);
+    transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stubCloser {
+        transition: color 0.3s ease;
+    }
+
+    .stubLink:hover .stubCloser,
+    .stubLink:focus-visible .stubCloser {
+        transform: none;
+    }
 }
 
 @media (min-width: 1024px) {

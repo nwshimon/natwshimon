@@ -2,7 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.css'
 import SectionsSidebar from '@/components/SectionsSidebar'
-import ContactStub from '@/components/ContactStub'
+// import ContactStub from '@/components/ContactStub'
+import ProjectCard from '@/components/ProjectCard'
+import HomeContact from '@/components/HomeContact'
+import { prototypeProjects } from '@/lib/prototypes'
 
 type FeaturedBlurb = {
     href: string
@@ -23,15 +26,9 @@ const featuredBlurbs: FeaturedBlurb[] = [
         imageSrc: '/photos/mgenie.avif',
         imageAlt: 'M-Genie featured project placeholder',
     },
-    {
-        href: '/works/m-lead',
-        label: 'Featured',
-        title: 'M-LEAD',
-        description: 'An accessibility remediation effort improving navigation and usability across the University of Michigan leadership platform.',
-        imageSrc: '/photos/mlead.png',
-        imageAlt: 'M-LEAD featured project placeholder',
-    },
 ]
+
+const recentPrototypes = prototypeProjects.slice(0, 3)
 
 export default function Home() {
     return (
@@ -47,9 +44,9 @@ export default function Home() {
             <div className={styles.contentRow}>
                 <div className={styles.sectionsCol}>
                     <SectionsSidebar />
-                    <div className={styles.sidebarStub}>
+                    {/* <div className={styles.sidebarStub}>
                         <ContactStub />
-                    </div>
+                    </div> */}
                 </div>
                 <div className={styles.featuredCol}>
                     <h2 className={styles.featuredHeading}>Recent Work</h2>
@@ -79,8 +76,15 @@ export default function Home() {
                             </div>
                         </Link>
                     ))}
+                    <div className={styles.recentPrototypesGrid}>
+                        {recentPrototypes.map((project) => (
+                            <ProjectCard key={project.href} {...project} />
+                        ))}
+                    </div>
                 </div>
             </div>
+
+            {/* <HomeContact /> */}
         </main>
     )
 }

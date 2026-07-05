@@ -3,19 +3,17 @@
     --font-afacad: 'Afacad Flux', system-ui, sans-serif;
     --color-cream: #F5F0E8;
     --color-ink: #353333;
-    --color-muted: #8a8680;
-    --color-accent: rgb(162, 121, 44);
-    --color-border: #D8D3CA;
-    --color-grey: #423e3e;
+    --color-muted: #645c50;
+    --color-accent: rgb(136, 103, 41);
+    --color-lightaccent: rgb(203, 163, 91);
+    --color-border: hsl(39, 15%, 82%);
+    --color-grey: #5b5151;
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-}
-.photo img {
-    pointer-events: none;
 }
 
 body {

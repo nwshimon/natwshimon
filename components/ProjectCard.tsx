@@ -36,7 +36,7 @@ export default function ProjectCard({
                     alt={imageAlt}
                     fill
                     sizes="(min-width: 1280px) 360px, (min-width: 768px) 50vw, 100vw"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
                 />
             </div>
             <div className={styles.body}>
@@ -46,6 +46,9 @@ export default function ProjectCard({
                 </div>
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.description}>{description}</p>
+                <span className={styles.cta}>
+                    {external ? 'View on GitHub' : 'View Project'} <span aria-hidden="true">&rarr;</span>
+                </span>
             </div>
         </Link>
     )

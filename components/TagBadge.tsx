@@ -1,5 +1,17 @@
 import styles from './TagBadge.module.css'
 
-export default function TagBadge({ label }: { label: string }) {
-    return <span className={styles.badge}>{label}</span>
+interface TagBadgeProps {
+    label: string | string[]
+}
+
+export default function TagBadge({ label }: TagBadgeProps) {
+    const labels = Array.isArray(label) ? label : [label]
+
+    return (
+        <span className={styles.group}>
+            {labels.map((l) => (
+                <span key={l} className={styles.badge}>{l}</span>
+            ))}
+        </span>
+    )
 }

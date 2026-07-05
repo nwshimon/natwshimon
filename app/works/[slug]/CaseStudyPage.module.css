@@ -19,12 +19,12 @@
 .metaLeft,
 .metaRight {
     font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 0.72rem;
+    color: var(--color-grey);
+    font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     font-variant-numeric: tabular-nums;
-    color: var(--color-muted);
 }
 
 /* ── 2. HEADLINE BLOCK ── */
@@ -60,7 +60,6 @@
     font-size: 1.1rem;
     width: 80%;
     margin: auto;
-    /* font-style: italic; */
     color: var(--color-ink);
     text-align: center;
     padding: 10px 48px 60px;

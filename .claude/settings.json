@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/works/m-genie)",
+      "Bash(curl -s http://localhost:3000/works/m-genie)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3000/works/m-genie -o /dev/null -w \"%{http_code}\\\\n\")"
+    ]
+  }
+}

@@ -8,11 +8,16 @@
 
 /* Section heading */
 .sectionHeading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
     font-family: var(--font-fraunces), Georgia, serif;
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-ink);
     margin-top: 16px;
+    margin-bottom: 5px;
     padding-bottom: 6px;
     border-bottom: 1px solid var(--color-border);
 }
@@ -21,28 +26,79 @@
     margin-top: 0;
 }
 
+.sectionLabel {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
 /* Plain prose */
 .prose {
     font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--color-ink);
     line-height: 1.75;
 }
 
 /* Callout / pull-quote */
 .callout {
+    width: 80%;
     font-family: var(--font-fraunces), Georgia, serif;
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--color-ink);
     line-height: 1.5;
     border-left: 3px solid var(--color-accent);
-    padding-left: 20px;
+    padding: 10px 16px 10px 20px;
     margin: 0;
+    background-color: transparent;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+    cursor: default;
+}
+
+.calloutCentered {
+    border-left: none;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    text-align: center;
+    width: 75%;
+    margin: auto;
+}
+
+/* Prose + callout side by side */
+.proseCalloutRow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.proseCalloutProse {
+    flex: 1;
+}
+
+.calloutSide {
+    flex-shrink: 0;
+}
+
+@media (min-width: 641px) {
+    .proseCalloutRow {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .calloutSide {
+        flex: 0 0 35%;
+    }
 }
 
 /* Bullet list */
 .bullets {
+    margin: 0;
     padding-left: 3em;
     display: flex;
     flex-direction: column;
@@ -51,7 +107,7 @@
 
 .bulletItem {
     font-family: var(--font-afacad), system-ui, sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--color-ink);
     line-height: 1.75;
     padding-left: 0.25em;
@@ -59,6 +115,71 @@
 
 .bulletItem::marker {
     color: var(--color-accent);
+}
+
+.bulletsWithPhotoStack {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Tighten only the transition from the photo-stack section into the next bullets block */
+.bulletsWithPhotoStack + .bullets {
+    margin-top: -12px;
+}
+
+.bulletsNarrative {
+    margin: 0;
+}
+
+.photoStackColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 360px;
+}
+
+.photoStackGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.photoStackLabel {
+    margin: 0;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+/* Process subsection label */
+.subsection {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+
+/* Two paragraphs side by side */
+.twoParagraphs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 641px) {
+    .twoParagraphs {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
 }
 
 /* Left column when sideColumn is active — prose + optional callout stacked */
@@ -108,7 +229,6 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    /* border: 1px solid var(--color-border); */
     overflow: hidden;
 }
 
@@ -119,7 +239,7 @@
     color: var(--color-ink);
     line-height: 1.45;
     text-align: center;
-    padding: 0 8px 8px;
+    padding: 0 8px 40px;
 }
 
 /* 2-column layout at wider screens */
@@ -145,6 +265,22 @@
     .inlineFigure,
     .sideColumn {
         flex: 0 0 55%;
+    }
+
+    .bulletsWithPhotoStack {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 28px;
+    }
+
+    .bulletsNarrative {
+        flex: 1;
+    }
+
+    .photoStackColumn {
+        flex: 0 0 42%;
+        max-width: none;
+        gap: 12px;
     }
 }
 

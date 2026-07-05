@@ -57,6 +57,7 @@
 }
 
 .title {
+    /* margin-top: 15px; */
     font-family: var(--font-fraunces), Georgia, serif;
     font-size: 1.1rem;
     font-weight: 700;
@@ -69,4 +70,52 @@
     font-size: 0.95rem;
     color: color-mix(in srgb, var(--color-muted) 50%, var(--color-ink) 50%);
     line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.cta {
+    position: relative;
+    display: inline-block;
+    align-self: flex-end;
+    margin-left: auto;
+    margin-top: auto;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    transition: transform 0.25s ease;
+}
+
+.cta::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .cta::after,
+.card:focus-visible .cta::after {
+    width: 100%;
+}
+
+.card:hover .cta,
+.card:focus-visible .cta {
+    transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta {
+        transition: none;
+    }
+
+    .card:hover .cta,
+    .card:focus-visible .cta {
+        transform: none;
+    }
 }

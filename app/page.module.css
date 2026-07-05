@@ -103,7 +103,6 @@
     gap: 18px;
     padding: 20px;
     border: 1px solid var(--color-border);
-    /* background: color-mix(in srgb, var(--color-border) 18%, var(--color-cream) 82%); */
     text-decoration: none;
     color: inherit;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -129,7 +128,6 @@
     height: auto;
     overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--color-border) 70%, var(--color-ink) 30%);
-    /* border-radius: 10px; */
     background: color-mix(in srgb, var(--color-border) 55%, var(--color-cream) 45%);
 }
 
@@ -203,21 +201,29 @@
     letter-spacing: 0.1em;
 }
 
-/* ── PREVIEW ── */
+/* ── RECENT PROTOTYPES (3-up) ── */
 
-.previewSection {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    padding: 24px;
-    text-align: center;
+.recentPrototypesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+/* ── TABLET ── */
+@media (min-width: 768px) {
+
+    .recentPrototypesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* ── DESKTOP ── */
 @media (min-width: 1024px) {
+
+    .recentPrototypesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
     .about {
         padding: 48px 48px 32px;
@@ -257,17 +263,5 @@
 
     .featuredTitle {
         font-size: 1.75rem;
-    }
-
-    .previewSection {
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: center;
-        padding: 48px;
-    }
-
-    .previewSection > :nth-child(1),
-    .previewSection > :nth-child(2) {
-        flex: 1 1 50%;
     }
 }

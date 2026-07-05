@@ -30,6 +30,27 @@ export default function SectionsSidebar() {
                         </Link>
                     </li>
                 ))}
+                <li className={styles.item}>
+                    <Link href="/contact" className={styles.stubLink}>
+                        <span className={styles.cornerTL} aria-hidden="true" />
+                        <span className={styles.cornerTR} aria-hidden="true" />
+                        <span className={styles.cornerBL} aria-hidden="true" />
+                        <span className={styles.cornerBR} aria-hidden="true" />
+                        <div className={styles.stubInner}>
+                            <span className={styles.innerCornerTL} aria-hidden="true" />
+                            <span className={styles.innerCornerTR} aria-hidden="true" />
+                            <span className={styles.innerCornerBL} aria-hidden="true" />
+                            <span className={styles.innerCornerBR} aria-hidden="true" />
+                            <span className={styles.stubEyebrow}>Have Something to Say?</span>
+                            <p className={styles.stubHeadline}>Get in touch!</p>
+                            {/* <span className={styles.stubDivider} aria-hidden="true" /> */}
+                            {/* <p className={styles.stubDescription}>Roles, collaborations, or anything on this site.</p> */}
+                            {/* <span className={styles.stubCloser}> */}
+                                {/* Go to page <span aria-hidden="true">&rarr;</span> */}
+                            {/* </span> */}
+                        </div>
+                    </Link>
+                </li>
             </ul>
         </aside>
     )

@@ -1,0 +1,162 @@
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+@media (min-width: 641px) {
+    .row {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+/* ── Column ── */
+
+.column {
+    background-color: rgba(136, 103, 41, 0.07);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.22s ease;
+}
+
+.column:hover,
+.column.open {
+    background-color: rgba(136, 103, 41, 0.13);
+}
+
+.column:hover {
+    transform: translateY(-4px);
+}
+
+.column:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+}
+
+.titleGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.eyebrow {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.title {
+    font-family: var(--font-afacad), Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.3;
+}
+
+.prose {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.15rem;
+    color: var(--color-ink);
+    line-height: 1.75;
+}
+
+.chevron {
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    transform: rotate(45deg);
+    transition: transform 0.22s ease;
+}
+
+.column.open .chevron {
+    transform: rotate(-135deg);
+}
+
+/* ── Accordion panel (grid-rows trick — no max-height needed) ── */
+
+.panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s ease;
+}
+
+.column.open .panel {
+    grid-template-rows: 1fr;
+}
+
+.panelInner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 20px 20px;
+}
+
+.bullets {
+    margin: 0;
+    padding-left: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bulletItem {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.05rem;
+    color: var(--color-ink);
+    line-height: 1.65;
+}
+
+.bulletItem::marker {
+    color: var(--color-accent);
+}
+
+.images {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.figure {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.imageBtn {
+    display: block;
+    width: 100%;
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: 0;
+    cursor: zoom-in;
+}
+
+.caption {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-muted);
+    line-height: 1.45;
+    text-align: center;
+}

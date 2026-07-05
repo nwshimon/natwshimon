@@ -1,0 +1,210 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+}
+
+.cardsRow {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+}
+
+.vs {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-muted);
+    text-align: center;
+    padding: 4px 0;
+    flex-shrink: 0;
+}
+
+@media (min-width: 641px) {
+    .cardsRow {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .card {
+        flex: 1;
+    }
+
+    .vs {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        padding-top: 90px;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(136, 103, 41, 0.07);
+}
+
+.card:hover {
+    background-color: rgba(136, 103, 41, 0.13);
+}
+
+.imageBtn {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: zoom-in;
+}
+
+.imageWrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 5px;
+    background: var(--color-border);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.labels {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.primary {
+    font-family: var(--font-afacad), Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--color-ink);
+    line-height: 1.3;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.secondary {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-grey);
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* ── Tags ── */
+
+.tags {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--color-cream);
+    box-shadow: 0 0 0 0 transparent;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tagIcon {
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.tagFail {
+    background-color: #a1483e;
+}
+
+.tagFail:hover {
+    box-shadow: 0 0 0 2px #7a352d;
+}
+
+.tagFail.tagOpen {
+    background-color: #7a352d;
+}
+
+.tagPass {
+    background-color: #4c7a50;
+}
+
+.tagPass:hover {
+    box-shadow: 0 0 0 2px #365a39;
+}
+
+.tagPass.tagOpen {
+    background-color: #365a39;
+}
+
+/* ── Shared explanation panel (grid-rows trick — no max-height needed) ── */
+
+.panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s ease;
+    border: 1px solid var(--color-border);
+    background-color: rgba(136, 103, 41, 0.05);
+    margin-top: 10px;
+}
+
+.panelOpen {
+    grid-template-rows: 1fr;
+}
+
+.panelInner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.panelLabel {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 16px 18px 0;
+}
+
+.panelText {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1rem;
+    color: var(--color-ink);
+    line-height: 1.65;
+    padding: 8px 18px 18px;
+}
+
+.hint {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--color-muted);
+    text-align: center;
+    margin-top: 14px;
+}

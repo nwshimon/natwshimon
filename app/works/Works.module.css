@@ -44,6 +44,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
+    width: 80%;
+    margin: auto;
 }
 
 /* ── Prototypes ── */
@@ -156,10 +158,6 @@
 /* ── Responsive ── */
 
 @media (min-width: 768px) {
-    .featuredGrid {
-        grid-template-columns: 1fr 1fr;
-    }
-
     .prototypesGrid {
         grid-template-columns: repeat(2, 1fr);
     }

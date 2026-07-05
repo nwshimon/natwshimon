@@ -38,10 +38,6 @@ export default function ContactStub({ animationDelay }: ContactStubProps) {
             </div>
             <div className={styles.tearLine} aria-hidden="true" />
             <div className={`${styles.admitSection} ${isTearing ? styles.tornOff : ''}`}>
-                <div className={styles.admitCopy}>
-                    <p className={styles.admit}>Admit One</p>
-                    <p className={styles.invite}>You&apos;re Invited!</p>
-                </div>
             </div>
         </Link>
     )

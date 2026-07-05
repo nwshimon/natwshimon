@@ -5,7 +5,7 @@ import styles from './FeaturedProjectCard.module.css'
 
 interface FeaturedProjectCardProps {
     href: string
-    category: string
+    category: string | string[]
     imageSrc: string
     imageAlt: string
     title: string
@@ -30,7 +30,7 @@ export default function FeaturedProjectCard({
                     alt={imageAlt}
                     fill
                     sizes="(min-width: 1280px) 560px, (min-width: 768px) 50vw, 100vw"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'left' }}
                 />
             </div>
             <div className={styles.body}>
