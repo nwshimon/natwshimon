@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { Fraunces, Afacad_Flux } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const fraunces = Fraunces({
     subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({
                 <div className="site-wrapper">
                     {children}
                 </div>
+                <Footer />
             </body>
         </html>
     )

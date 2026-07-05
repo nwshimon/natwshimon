@@ -19,7 +19,7 @@ const featuredProjects = caseStudies
 
 const teardowns = [
     {
-        date: '2023',
+        date: '2025',
         format: 'Presentation',
         headline: 'UNIQLO E-Commerce Heuristic Evaluation',
         description:
@@ -30,7 +30,7 @@ const teardowns = [
         ctaLabel: 'View Presentation',
     },
     {
-        date: '2023',
+        date: '2025',
         format: 'Article',
         headline: 'Design Patterns & Dark Patterns',
         description:

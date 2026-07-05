@@ -4,7 +4,6 @@ import styles from './page.module.css'
 import SectionsSidebar from '@/components/SectionsSidebar'
 // import ContactStub from '@/components/ContactStub'
 import ProjectCard from '@/components/ProjectCard'
-import HomeContact from '@/components/HomeContact'
 import { prototypeProjects } from '@/lib/prototypes'
 
 type FeaturedBlurb = {
@@ -83,8 +82,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
-            {/* <HomeContact /> */}
         </main>
     )
 }

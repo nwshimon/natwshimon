@@ -93,7 +93,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-accent);
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
 }
 
 .featuredCard {
@@ -214,7 +214,7 @@
 @media (min-width: 768px) {
 
     .recentPrototypesGrid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -238,7 +238,7 @@
         align-items: stretch;
         padding: 0 48px;
         gap: 0;
-        margin-bottom: 48px;
+        /* margin-bottom: 48px; */
     }
 
     .sectionsCol {

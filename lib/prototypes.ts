@@ -12,7 +12,7 @@ export interface PrototypeProject {
 export const prototypeProjects: PrototypeProject[] = [
     {
         href: 'https://github.com/natwshimon/knitpicker',
-        dateRange: '2024',
+        dateRange: '2026',
         category: 'Software',
         imageSrc: '/photos/knitpicker.avif',
         imageAlt: 'Knitpicker CLI tool interface',
@@ -22,7 +22,7 @@ export const prototypeProjects: PrototypeProject[] = [
     },
     {
         href: 'https://github.com/natwshimon/xc-website',
-        dateRange: '2023',
+        dateRange: '2026',
         category: 'Software',
         imageSrc: '/photos/xc-design.avif',
         imageAlt: 'Cross-Country Team website homepage',
@@ -31,18 +31,8 @@ export const prototypeProjects: PrototypeProject[] = [
         external: true,
     },
     {
-        href: 'https://github.com/natwshimon/cleanify',
-        dateRange: '2022–23',
-        category: 'Software',
-        imageSrc: '/photos/cleanify-greencart.avif',
-        imageAlt: 'Cleanify and Greencart app screens',
-        title: 'Cleanify & Greencart',
-        description: 'Paired apps that gamify eco-friendly shopping and household waste reduction.',
-        external: true,
-    },
-    {
         href: 'https://github.com/natwshimon/dog-breed-mystery',
-        dateRange: '2022',
+        dateRange: '2025',
         category: 'AI / ML',
         imageSrc: '/photos/dog-ml.avif',
         imageAlt: 'Dog Breed Mystery classification app',
@@ -52,12 +42,22 @@ export const prototypeProjects: PrototypeProject[] = [
     },
     {
         href: 'https://github.com/natwshimon/green-card-analysis',
-        dateRange: '2022',
+        dateRange: '2025',
         category: 'Data',
         imageSrc: '/photos/datathon-2025.png',
         imageAlt: 'Green card approval trend charts',
         title: 'Green Card Data Analysis',
         description: 'Exploratory analysis of USCIS approval trends across green card categories.',
+        external: true,
+    },
+    {
+        href: 'https://github.com/natwshimon/cleanify',
+        dateRange: '2024',
+        category: 'Software',
+        imageSrc: '/photos/cleanify-greencart.avif',
+        imageAlt: 'Cleanify and Greencart app screens',
+        title: 'Cleanify & Greencart',
+        description: 'Paired apps that gamify eco-friendly shopping and household waste reduction.',
         external: true,
     },
 ]

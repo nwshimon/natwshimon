@@ -11,7 +11,7 @@ export default function NotFound() {
                 This page seems to have gone missing from the archives.
             </h1>
             <p className={styles.subline}>
-                The page you&rsquo;re looking for doesn&rsquo;t exist or may have moved.
+                The page you&rsquo;re looking for doesn&rsquo;t exist or may still be in development.
                 Try heading back to the front page.
             </p>
             <div className={styles.divider} aria-hidden="true" />
