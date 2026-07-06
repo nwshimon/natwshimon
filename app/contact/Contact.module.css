@@ -1,0 +1,144 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page {
+    width: 95%;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* ── Caption ── */
+
+.caption {
+    width: 60%;
+    margin-top: 12px;
+    margin-bottom: 40px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    text-align: right;
+    color: color-mix(in srgb, var(--color-ink) 45%, transparent 55%);
+}
+
+/* ── Bio ── */
+
+.bio {
+    /* max-width: 520px; */
+    width: 60%;
+    text-align: center;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--color-ink);
+    margin-bottom: 40px;
+}
+
+/* ── Callout ── */
+
+.callout {
+    width: 75%;
+    max-width: 620px;
+    margin: 0 0 15px;
+    padding-top: 40px;
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--color-ink);
+}
+
+.calloutLink {
+    color: var(--color-accent);
+    /* text-decoration: underline; */
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.calloutLink:hover,
+.calloutLink:focus-visible {
+    color: color-mix(in srgb, var(--color-accent) 80%, var(--color-ink) 20%);
+    text-decoration: underline;
+}
+
+.calloutLink:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+
+/* ── Buttons ── */
+
+.buttonRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 8px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+    border: 1px solid var(--color-accent);
+    padding: 10px 24px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: var(--color-accent);
+    color: var(--color-cream);
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.emailText {
+    margin-bottom: 40px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1rem;
+    color: var(--color-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.emailText:hover,
+.emailText:focus-visible {
+    color: var(--color-accent);
+}
+
+.emailText:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+    .page {
+        padding: 48px 48px;
+    }
+}

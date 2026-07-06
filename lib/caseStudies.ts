@@ -228,7 +228,7 @@ export const caseStudies: CaseStudy[] = [
             {
                 type: 'image',
                 src: '/photos/mgenie-before-after.png',
-                alt: `User flow diagram comparing the Google Drive native UI and the ideal M-Genie workflow for staff offboarding. Left shows Drive's manual multi-step process; right shows M-Genie's streamlined flow with system-handled decisions.`,
+                alt: `Comparison user flow diagram: Left shows Drive's manual multi-step process; Right shows M-Genie's streamlined flow with system-handled decisions.`,
                 caption: 'A user flow diagram comparing the Google Drive native UI and the ideal solution on M-Genie',
             },
 

@@ -9,6 +9,7 @@ import { prototypeProjects } from '@/lib/prototypes'
 type FeaturedBlurb = {
     href: string
     label: string
+    dateRange: string
     title: string
     description: string
     imageAlt: string
@@ -20,14 +21,26 @@ const featuredBlurbs: FeaturedBlurb[] = [
     {
         href: '/works/m-genie',
         label: 'Featured',
+        dateRange: '2026',
         title: 'M-Genie',
-        description: 'A full-stack AI assistant streamlining maintenance workflows for University of Michigan facilities staff.',
+        description: 'A web application for University of Michigan personnel, to streamline administrative workflows and declutter their digital workspaces.',
         imageSrc: '/photos/mgenie.avif',
-        imageAlt: 'M-Genie featured project placeholder',
+        imageAlt: 'Cropped screenshot of M-Genie frontend interface: a dashboard with a Michigan blue colored sidebar on the left and a table containing files on the right',
     },
 ]
 
-const recentPrototypes = prototypeProjects.slice(0, 3)
+// Shorter, homepage-only blurbs — the full descriptions in lib/prototypes.ts are sized for the /works grid.
+const recentWorkDescriptions: Record<string, string> = {
+    'https://mlead.umich.edu/': "As a web developer for U-M's leadership hub, I maintained and enhanced the site on WordPress and Pantheon.",
+    'https://github.com/nwshimon/si338-final-proj': "An accessibility-focused website redesign for Skyline High School's cross-country team.",
+    'https://github.com/nwshimon/knit-picker': 'A 2D crochet grid pattern generator for tapestry crochet, at any skill level.',
+}
+
+const recentPrototypes = prototypeProjects.slice(0, 3).map((project) => ({
+    ...project,
+    label: 'Prototype',
+    description: recentWorkDescriptions[project.href] ?? project.description,
+}))
 
 export default function Home() {
     return (
@@ -68,7 +81,10 @@ export default function Home() {
                                 )}
                             </div>
                             <div className={styles.featuredBody}>
-                                <span className={styles.featuredLabel}>{project.label}</span>
+                                <div className={styles.featuredMeta}>
+                                    <span className={styles.featuredDate}>{project.dateRange}</span>
+                                    <span className={styles.featuredLabel}>{project.label}</span>
+                                </div>
                                 <h3 className={styles.featuredTitle}>{project.title}</h3>
                                 <p className={styles.featuredDesc}>{project.description}</p>
                                 <span className={styles.featuredCta}>See the work →</span>

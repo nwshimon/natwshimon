@@ -42,6 +42,16 @@
     flex: 1;
 }
 
+.eyebrow {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-variant: small-caps;
+    color: var(--color-accent);
+}
+
 .meta {
     display: flex;
     align-items: center;

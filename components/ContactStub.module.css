@@ -53,7 +53,7 @@
     flex: 1 1 auto;
     display: flex;
     align-items: center;
-    background-color: #412921;
+    background-color: var(--color-brown);
     background-image: radial-gradient(circle at 15% 95%, var(--stub-glow), transparent 60%),
         linear-gradient(var(--stub-gradient-angle), var(--stub-gradient-start), var(--stub-gradient-end));
     border-left: dashed 2px var(--color-cream);

@@ -99,9 +99,9 @@
 .featuredCard {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 18px;
-    padding: 20px;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
     border: 1px solid var(--color-border);
     text-decoration: none;
     color: inherit;
@@ -127,8 +127,14 @@
     aspect-ratio: 5 / 4;
     height: auto;
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-border) 70%, var(--color-ink) 30%);
+    border-right: 1px solid color-mix(in srgb, var(--color-border) 70%, var(--color-ink) 30%);
     background: color-mix(in srgb, var(--color-border) 55%, var(--color-cream) 45%);
+    transition: border-color 0.25s ease;
+}
+
+.featuredCard:hover .featuredImageWrap,
+.featuredCard:focus-visible .featuredImageWrap {
+    border-right-color: var(--color-accent);
 }
 
 .featuredPlaceholder {
@@ -158,7 +164,22 @@
     flex-direction: column;
     gap: 8px;
     min-width: 0;
-    padding: 0;
+    padding: 20px;
+}
+
+.featuredMeta {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.featuredDate {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
 }
 
 .featuredLabel {

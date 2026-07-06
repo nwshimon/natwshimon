@@ -18,7 +18,7 @@
 .card {
     --mc-accent: color-mix(in srgb, var(--color-lightaccent) 75%, white 25%);
     --mc-glow: rgba(120, 78, 48, 0.42);
-    background-color: #412921;
+    background-color: var(--color-brown);
     /* background-image:
         radial-gradient(circle at 15% 95%, var(--mc-glow), transparent 60%),
         linear-gradient(145deg, #3C2017, #200e08); */

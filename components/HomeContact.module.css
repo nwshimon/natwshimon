@@ -103,7 +103,7 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-cream);
-    background: var(--color-ink);
+    background: var(--color-brown);
     border: none;
     border-radius: 0;
     padding: 9px 18px;
@@ -113,7 +113,7 @@
 
 .submit:hover,
 .submit:focus-visible {
-    background: color-mix(in srgb, var(--color-ink) 85%, var(--color-accent) 15%);
+    background: color-mix(in srgb, var(--color-brown) 85%, var(--color-accent) 15%);
     transform: translateY(-2px);
 }
 

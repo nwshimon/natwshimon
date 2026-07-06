@@ -8,6 +8,7 @@
     --color-lightaccent: rgb(203, 163, 91);
     --color-border: hsl(39, 15%, 82%);
     --color-grey: #5b5151;
+    --color-brown: #412921;
 }
 
 *, *::before, *::after {

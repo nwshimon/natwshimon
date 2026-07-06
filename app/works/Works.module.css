@@ -12,10 +12,10 @@
 .page {
     width: 95%;
     margin: 0 auto;
-    padding: 48px 24px;
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
-    gap: 72px;
+    gap: 20px;
     animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
@@ -25,6 +25,10 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+}
+
+.section:not(:first-of-type) {
+    margin-top: 40px;
 }
 
 .sectionLabel {
@@ -61,25 +65,49 @@
 .teardownsList {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    gap: 20px;
+    width: 75%;
     margin: auto;
 }
 
 .teardownItem {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--color-border);
+    gap: 3px;
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-/* .teardownItem:first-child {
-    border-top: 1px solid var(--color-border);
-} */
+.teardownItem:hover,
+.teardownItem:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(200, 151, 58, 0.15);
+    border-color: var(--color-accent);
+}
+
+.teardownItem:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .teardownItem {
+        transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .teardownItem:hover,
+    .teardownItem:focus-visible {
+        transform: none;
+    }
+}
 
 .teardownMeta {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
 }
 
@@ -128,33 +156,51 @@
     flex-shrink: 0;
 }
 
-.externalLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    align-self: flex-start;
+.teardownCta {
+    position: relative;
+    display: inline-block;
+    align-self: flex-end;
+    margin-left: auto;
+    margin-top: 6px;
     font-family: var(--font-afacad), system-ui, sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-accent);
-    text-decoration: none;
-    border: 1px solid var(--color-accent);
-    padding: 6px 18px;
-    margin-top: 6px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: transform 0.25s ease;
 }
 
-.externalLink:hover,
-.externalLink:focus-visible {
-    background: var(--color-accent);
-    color: var(--color-cream);
+.teardownCta::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.externalLink:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+.teardownItem:hover .teardownCta::after,
+.teardownItem:focus-visible .teardownCta::after {
+    width: 100%;
+}
+
+.teardownItem:hover .teardownCta,
+.teardownItem:focus-visible .teardownCta {
+    transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .teardownCta {
+        transition: none;
+    }
+
+    .teardownItem:hover .teardownCta,
+    .teardownItem:focus-visible .teardownCta {
+        transform: none;
+    }
 }
 
 /* ── Responsive ── */
@@ -178,7 +224,7 @@
 
 @media (min-width: 1024px) {
     .page {
-        padding: 64px 48px;
+        padding: 48px 48px;
     }
 
     .prototypesGrid {

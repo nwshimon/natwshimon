@@ -117,7 +117,7 @@
     position: relative;
     display: block;
     padding: 16px;
-    background-color: #412921;
+    background-color: var(--color-brown);
     /* background-image: radial-gradient(circle at 15% 95%, var(--stub-glow), transparent 60%), */
         /* linear-gradient(var(--stub-gradient-angle), var(--stub-gradient-start), var(--stub-gradient-end)); */
     text-transform: uppercase;

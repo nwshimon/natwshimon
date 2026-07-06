@@ -12,6 +12,7 @@ interface ProjectCardProps {
     title: string
     description: string
     external?: boolean
+    label?: string
 }
 
 export default function ProjectCard({
@@ -23,6 +24,7 @@ export default function ProjectCard({
     title,
     description,
     external,
+    label,
 }: ProjectCardProps) {
     return (
         <Link
@@ -42,7 +44,7 @@ export default function ProjectCard({
             <div className={styles.body}>
                 <div className={styles.meta}>
                     <span className={styles.date}>{dateRange}</span>
-                    <TagBadge label={category} />
+                    {label ? <span className={styles.eyebrow}>{label}</span> : <TagBadge label={category} />}
                 </div>
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.description}>{description}</p>

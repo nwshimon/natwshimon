@@ -1,0 +1,40 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 0px 24px 32px;
+}
+
+.eyebrow {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-top: 0.25rem;
+    color: var(--color-accent);
+}
+
+.title {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.1;
+}
+
+.description {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-ink);
+    line-height: 1.5;
+    max-width: 85%;
+}
+
+@media (min-width: 1024px) {
+    .title {
+        font-size: 2.5rem;
+    }
+}
