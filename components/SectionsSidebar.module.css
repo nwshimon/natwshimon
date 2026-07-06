@@ -121,7 +121,7 @@
     /* background-image: radial-gradient(circle at 15% 95%, var(--stub-glow), transparent 60%), */
         /* linear-gradient(var(--stub-gradient-angle), var(--stub-gradient-start), var(--stub-gradient-end)); */
     text-transform: uppercase;
-    color: var(--color-cream);
+    color: var(--color-paper);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     border: 10px double var(--color-cream);
 }
@@ -206,8 +206,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px dashed color-mix(in srgb, var(--color-cream) 50%, transparent 50%);
-    /* border-radius: */
+    border: 1px dashed color-mix(in srgb, var(--color-paper) 50%, transparent 50%);
 }
 
 .innerCornerTL,
@@ -217,7 +216,7 @@
     position: absolute;
     width: 8px;
     height: 8px;
-    border: 0 solid color-mix(in srgb, var(--color-cream) 50%, transparent 50%);
+    border: 0 solid color-mix(in srgb, var(--color-paper) 50%, transparent 50%);
     transition: border-color 0.25s ease;
 }
 
@@ -266,7 +265,7 @@
     font-weight: 500;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--color-cream) 65%, transparent 35%);
+    color: color-mix(in srgb, var(--color-paper) 65%, transparent 35%);
 }
 
 .stubHeadline {
@@ -275,7 +274,7 @@
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.15;
-    color: var(--color-cream);
+    color: var(--color-paper);
     transition: color 0.3s ease;
 }
 
@@ -295,7 +294,7 @@
     font-family: var(--font-afacad), system-ui, sans-serif;
     font-size: 0.75rem;
     line-height: 1.5;
-    color: color-mix(in srgb, var(--color-cream) 75%, transparent 25%);
+    color: color-mix(in srgb, var(--color-paper) 75%, transparent 25%);
 }
 
 .stubCloser {
@@ -304,7 +303,7 @@
     font-size: 0.75rem;
     font-style: italic;
     letter-spacing: 0.04em;
-    color: color-mix(in srgb, var(--color-cream) 70%, transparent 30%);
+    color: color-mix(in srgb, var(--color-paper) 70%, transparent 30%);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -321,6 +320,32 @@
 
     .stubLink:hover .stubCloser,
     .stubLink:focus-visible .stubCloser {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .itemLink,
+    .subtitle,
+    .headline,
+    .headline::after,
+    .cornerTL,
+    .cornerTR,
+    .cornerBL,
+    .cornerBR,
+    .innerCornerTL,
+    .innerCornerTR,
+    .innerCornerBL,
+    .innerCornerBR {
+        transition: none;
+    }
+
+    .pageNote {
+        transition: color 0.3s ease, padding-top 0.3s ease;
+    }
+
+    .itemLink:hover .pageNote,
+    .itemLink:focus-visible .pageNote {
         transform: none;
     }
 }

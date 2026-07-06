@@ -120,8 +120,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .cta {
+    .card,
+    .imageWrap,
+    .cta,
+    .cta::after {
         transition: none;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+        transform: none;
     }
 
     .card:hover .cta,

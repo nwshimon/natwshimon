@@ -222,6 +222,23 @@
     letter-spacing: 0.1em;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .main {
+        animation: none;
+    }
+
+    .featuredCard,
+    .featuredImageWrap,
+    .featuredCta {
+        transition: none;
+    }
+
+    .featuredCard:hover,
+    .featuredCard:focus-visible {
+        transform: none;
+    }
+}
+
 /* ── RECENT PROTOTYPES (3-up) ── */
 
 .recentPrototypesGrid {

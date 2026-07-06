@@ -152,3 +152,9 @@
         font-size: 4rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .cta::after {
+        transition: none;
+    }
+}

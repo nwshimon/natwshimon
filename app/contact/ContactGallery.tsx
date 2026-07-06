@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import styles from './ContactGallery.module.css'
 
@@ -9,8 +10,13 @@ interface Photo {
     alt: string
 }
 
+const FOCUSABLE_SELECTOR = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+
 export default function ContactGallery({ photos }: { photos: Photo[] }) {
     const [activeIdx, setActiveIdx] = useState<number | null>(null)
+    const overlayRef = useRef<HTMLDivElement>(null)
+    const closeBtnRef = useRef<HTMLButtonElement>(null)
+    const lastFocusedRef = useRef<HTMLElement | null>(null)
 
     const close = useCallback(() => setActiveIdx(null), [])
     const prev = useCallback(
@@ -22,12 +28,35 @@ export default function ContactGallery({ photos }: { photos: Photo[] }) {
         [photos.length]
     )
 
+    // Move focus into the dialog on open, and back to the trigger on close.
+    useEffect(() => {
+        if (activeIdx === null) return
+        lastFocusedRef.current = document.activeElement as HTMLElement
+        closeBtnRef.current?.focus()
+        return () => lastFocusedRef.current?.focus()
+    }, [activeIdx === null])
+
     useEffect(() => {
         if (activeIdx === null) return
         function onKey(e: KeyboardEvent) {
             if (e.key === 'Escape') close()
             if (e.key === 'ArrowLeft') prev()
             if (e.key === 'ArrowRight') next()
+
+            if (e.key === 'Tab') {
+                const focusable = overlayRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+                if (!focusable || focusable.length === 0) return
+                const first = focusable[0]
+                const last = focusable[focusable.length - 1]
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault()
+                    last.focus()
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault()
+                    first.focus()
+                }
+            }
         }
         window.addEventListener('keydown', onKey)
         return () => window.removeEventListener('keydown', onKey)
@@ -54,15 +83,16 @@ export default function ContactGallery({ photos }: { photos: Photo[] }) {
                 ))}
             </div>
 
-            {activeIdx !== null && (
+            {activeIdx !== null && createPortal(
                 <div
+                    ref={overlayRef}
                     className={styles.overlay}
                     onClick={close}
                     role="dialog"
                     aria-modal="true"
                     aria-label="Photo lightbox"
                 >
-                    <button className={styles.closeBtn} onClick={close} aria-label="Close">✕</button>
+                    <button ref={closeBtnRef} className={styles.closeBtn} onClick={close} aria-label="Close">✕</button>
 
                     <div className={styles.lightboxInner} onClick={(e) => e.stopPropagation()}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -97,7 +127,8 @@ export default function ContactGallery({ photos }: { photos: Photo[] }) {
                             </div>
                         </>
                     )}
-                </div>
+                </div>,
+                document.body
             )}
         </>
     )

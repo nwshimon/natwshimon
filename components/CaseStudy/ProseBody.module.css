@@ -315,6 +315,11 @@
     .lightboxOverlay {
         animation: none;
     }
+
+    .callout,
+    .lightboxClose {
+        transition: none;
+    }
 }
 
 .lightboxContent {
@@ -331,7 +336,7 @@
     right: 24px;
     background: rgba(53, 51, 51, 0.7);
     border: 1px solid rgba(245, 240, 232, 0.2);
-    color: var(--color-cream);
+    color: var(--color-paper);
     font-size: 1rem;
     line-height: 1;
     width: 36px;

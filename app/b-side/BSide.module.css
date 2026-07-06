@@ -1,0 +1,184 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page {
+    width: 90%;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    margin-bottom: 40px;
+}
+
+/* ── Masthead extras (byline + tagline) ── */
+
+.masthead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    margin-top: -20px;
+    margin-bottom: 32px;
+}
+
+.byline {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+}
+
+.tagline {
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 1.1rem;
+    /* font-style: italic; */
+    color: var(--color-ink);
+    max-width: 80%;
+}
+
+/* ── Identity strip ── */
+
+.identityStrip {
+    width: 100%;
+    max-width: 520px;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.identityTile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.identityFrame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.identityFrameLight {
+    border: 0.5px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-border) 55%, var(--color-cream) 45%);
+}
+
+.identityFrameDark {
+    border: none;
+    background-color: var(--color-brown);
+    background-image: radial-gradient(circle at 78% 22%, rgba(190, 149, 74, 0.28), transparent 42%),
+        linear-gradient(145deg, #3C2017, #200e08);
+}
+
+.identityCaption {
+    margin-top: 6px;
+    font-family: var(--font-afacad), system-ui, sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    text-align: center;
+}
+
+/* ── Desktop: scattered mosaic ── */
+@media (min-width: 1024px) {
+    .page {
+        padding: 48px 24px;
+    }
+
+    .identityStrip {
+        width: 750px;
+        max-width: none;
+        height: 210px;
+        margin: 0 auto 56px;
+        display: block;
+        position: relative;
+    }
+
+    .identityTile {
+        position: absolute;
+        width: 160px;
+        align-items: center;
+    }
+
+    .identityTile:nth-child(1) {
+        left: 0;
+        top: 15px;
+    }
+
+    .identityTile:nth-child(2) {
+        left: 190px;
+        top: 25px;
+    }
+
+    .identityTile:nth-child(3) {
+        left: 380px;
+        top: 0;
+    }
+
+    .identityTile:nth-child(4) {
+        left: 570px;
+        top: 20px;
+    }
+
+    .identityFrame {
+        transform: rotate(var(--tile-rot));
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .identityCaption {
+        position: absolute;
+        inset: 0;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background: rgba(53, 51, 51, 0.88);
+        color: var(--color-paper);
+        opacity: 0;
+        transform: rotate(var(--tile-rot));
+        transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .identityTile:hover {
+        z-index: 10;
+    }
+
+    .identityTile:hover .identityFrame {
+        transform: rotate(0deg) scale(1.03);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .identityTile:hover .identityCaption {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+    .identityFrame,
+    .identityCaption {
+        transform: none;
+        transition: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page {
+        animation: none;
+    }
+}

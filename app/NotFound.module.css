@@ -112,3 +112,18 @@
 .backLink:hover .arrow {
     transform: translateX(-3px);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .page {
+        animation: none;
+    }
+
+    .backLink,
+    .arrow {
+        transition: none;
+    }
+
+    .backLink:hover .arrow {
+        transform: none;
+    }
+}

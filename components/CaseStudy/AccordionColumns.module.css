@@ -160,3 +160,18 @@
     line-height: 1.45;
     text-align: center;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .column {
+        transition: background-color 0.18s ease;
+    }
+
+    .column:hover {
+        transform: none;
+    }
+
+    .chevron,
+    .panel {
+        transition: none;
+    }
+}

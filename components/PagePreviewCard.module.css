@@ -71,3 +71,15 @@
         font-size: 1.5rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .imageWrap {
+        transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+        transform: none;
+    }
+}

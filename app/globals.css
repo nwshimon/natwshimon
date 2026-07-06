@@ -9,6 +9,22 @@
     --color-border: hsl(39, 15%, 82%);
     --color-grey: #5b5151;
     --color-brown: #412921;
+    /* Fixed — does NOT invert with the theme. For light text/borders on surfaces that are
+       always dark regardless of site theme (ticket-stub cards, MetaCards, status pills, dark
+       buttons). Using --color-cream there instead would go dark-on-dark once dark mode flips
+       --color-cream to near-black. */
+    --color-paper: #F5F0E8;
+}
+
+[data-theme="dark"] {
+    --color-cream: #1E1A17;                  /* page background, "paper" */
+    --color-ink: #F2ECE3;                    /* primary text, near-white */
+    --color-muted: #B3A897;                  /* secondary/tertiary text */
+    --color-accent: rgb(212, 175, 116);      /* warm bronze/gold — brightened for contrast */
+    --color-lightaccent: rgb(136, 103, 41);  /* darker bronze, now the mix input */
+    --color-border: rgba(245, 240, 232, 0.14); /* hairline borders, dividers */
+    --color-grey: #A79C8C;                   /* nav/tagline text, second muted tone */
+    --color-brown: #4A362C;                  /* "ticket/card" surface, lightened for elevation */
 }
 
 *, *::before, *::after {

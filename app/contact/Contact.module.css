@@ -142,3 +142,15 @@
         padding: 48px 48px;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .page {
+        animation: none;
+    }
+
+    .calloutLink,
+    .button,
+    .emailText {
+        transition: none;
+    }
+}

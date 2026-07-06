@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ThemeToggle from './ThemeToggle'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
@@ -33,8 +34,9 @@ export default function Navbar() {
                 <div className={styles.navInner}>
                     <Link href="/" className={styles.navLink}>Home</Link>
                     <Link href="/works" className={styles.navLink}>Digital Projects</Link>
-                    {/* <Link href="/b-side" className={styles.navLink}>Arts & Etc.</Link> */}
+                    <Link href="/b-side" className={styles.navLink}>Arts & Etc.</Link>
                     <Link href="/contact" className={styles.navLink}>Get In Touch</Link>
+                    <ThemeToggle />
                 </div>
             </nav>
         </>

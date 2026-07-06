@@ -58,6 +58,13 @@
 
 @media (prefers-reduced-motion: reduce) {
     .overlay { animation: none; }
+
+    .thumb,
+    .closeBtn,
+    .navBtn,
+    .dot {
+        transition: none;
+    }
 }
 
 .lightboxInner {
@@ -93,7 +100,7 @@
     right: 24px;
     background: rgba(53, 51, 51, 0.7);
     border: 1px solid rgba(245, 240, 232, 0.2);
-    color: var(--color-cream);
+    color: var(--color-paper);
     font-size: 1rem;
     line-height: 1;
     width: 36px;
@@ -120,7 +127,7 @@
     transform: translateY(-50%);
     background: rgba(53, 51, 51, 0.6);
     border: 1px solid rgba(245, 240, 232, 0.15);
-    color: var(--color-cream);
+    color: var(--color-paper);
     font-size: 1.1rem;
     width: 40px;
     height: 40px;
@@ -165,5 +172,5 @@
 }
 
 .dotActive {
-    background: var(--color-cream);
+    background: var(--color-paper);
 }

@@ -86,7 +86,7 @@
     font-family: var(--font-fraunces), Georgia, serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-cream);
+    color: var(--color-paper);
     line-height: 1.3;
 }
 
@@ -106,7 +106,7 @@
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: var(--color-cream);
+    color: var(--color-paper);
     background: rgba(245, 240, 232, 0.12);
     border: 1px solid rgba(245, 240, 232, 0.25);
     padding: 5px 12px;
@@ -143,6 +143,21 @@
 
 @media (prefers-reduced-motion: reduce) {
     .lightboxOverlay { animation: none; }
+
+    .image,
+    .overlay,
+    .viewBtn,
+    .lightboxClose,
+    .navBtn,
+    .dot {
+        transition: none;
+    }
+
+    .tile:hover .image,
+    .tile:focus-within .image,
+    .tile.open .image {
+        transform: none;
+    }
 }
 
 .lightboxClose {
@@ -151,7 +166,7 @@
     right: 24px;
     background: rgba(53, 51, 51, 0.7);
     border: 1px solid rgba(245, 240, 232, 0.2);
-    color: var(--color-cream);
+    color: var(--color-paper);
     font-size: 1rem;
     line-height: 1;
     width: 36px;
@@ -208,7 +223,7 @@
     transform: translateY(-50%);
     background: rgba(53, 51, 51, 0.6);
     border: 1px solid rgba(245, 240, 232, 0.15);
-    color: var(--color-cream);
+    color: var(--color-paper);
     font-size: 1.1rem;
     width: 40px;
     height: 40px;
@@ -247,4 +262,4 @@
     transition: background 0.15s ease;
 }
 
-.dotActive { background: var(--color-cream); }
+.dotActive { background: var(--color-paper); }
