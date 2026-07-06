@@ -151,7 +151,7 @@
 }
 
 .tagPass {
-    background-color: #4c7a50;
+    background-color: #326936;
 }
 
 .tagPass:hover {
@@ -159,7 +159,7 @@
 }
 
 .tagPass.tagOpen {
-    background-color: #365a39;
+    background-color: #315534;
 }
 
 /* ── Shared explanation panel (grid-rows trick — no max-height needed) ── */
